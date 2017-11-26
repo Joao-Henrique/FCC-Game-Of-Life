@@ -1,0 +1,31 @@
+.box {
+  display: inline-block;
+  border: 0.5px solid black;
+  width: 10px;
+  height: 10px;
+  margin-left: -0.5px;
+  margin-right: -0.5px;
+}
+
+.off {
+  background-color: lightslategrey;
+}
+
+.on {
+  background-color: lightgreen;
+}
+
+.box:hover {
+  background-color: lightcoral;
+}
+
+.center {
+  margin: auto;
+  display: table;
+}
+
+.grid {
+  width: 150px;
+  line-height: 0;
+  margin: auto;
+}
