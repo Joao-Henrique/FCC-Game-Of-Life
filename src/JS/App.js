@@ -1,23 +1,64 @@
-import React, {Component} from 'react';
+import React from 'react';
 import logo from '../img/logo.svg';
 import FooterInstance from './footer';
 
-class Grid extends React.Component {
+class Box extends React.Component {
+  selectBox = () => {
+    this
+      .props
+      .selectBox(this.props.row, this.props.col)
+  }
   render() {
-    return (
-      <div>
-        Grid
-      </div>
-    )
+    return (<div
+      className={this.props.boxClass}
+      id={this.props.id}
+      onClick={this.selectBox}/>);
   }
 }
 
-class App extends Component {
+class Grid extends React.Component {
+  render() {
+    const width = this.props.cols * 9;
+    var rowsArr = [];
+    var boxClass = "";
+    for (var i = 0; i < this.props.rows; i++) {
+      for (var j = 0; j < this.props.cols; j++) {
+        let boxId = i + "_" + j;
 
+        boxClass = this.props.gridFull
+          ? "box on"
+          : "box off";
+        console.log(this.props.cols);
+        rowsArr.push(<Box
+          boxClass={boxClass}
+          key={boxId}
+          boxId={boxId}
+          row={i}
+          col={j}
+          selectBox={this.props.selectBox}/>)
+      }
+    }
+    return (
+      <div className="grid" style={{
+        width: width
+      }}>
+        {rowsArr}
+      </div>
+    );
+  }
+}
+class App extends React.Component {
   constructor() {
     super();
+    this.speed = 100;
+    this.rows = 30;
+    this.cols = 50;
+
     this.state = {
-      generator: 0
+      generation: 0,
+      gridFull: Array(this.rows)
+        .fill()
+        .map(() => Array(this.cols).fill(false))
     }
   }
 
@@ -31,7 +72,11 @@ class App extends Component {
 
         <div>
           <h1>The Game Of Life</h1>
-          <Grid/>
+          <Grid
+            gridFull={this.rows}
+            rows={this.rows}
+            cols={this.cols}
+            selectBox={this.selectBox}/>
           <h2>Generations: {this.state.generation}</h2>
         </div>
 
