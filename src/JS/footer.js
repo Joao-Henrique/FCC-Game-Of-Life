@@ -8,6 +8,15 @@ const FooterInstance = () => {
           <ul className="social-network social-circle">
             <li>
               <a
+                className="socialIcon "
+                href="https://joao-henrique.github.io/JH-Website/"
+                target="blank"
+                title="Portfolio">
+                <i className="fa fa-home "></i>
+              </a>
+            </li>
+            <li>
+              <a
                 className="socialIcon"
                 href="https://www.facebook.com/ljoaohenriquel"
                 title="Facebook">

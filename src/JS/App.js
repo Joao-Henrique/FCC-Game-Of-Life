@@ -21,13 +21,16 @@ class App extends React.Component {
     }
   }
 
+  /* TURNS A SELECTED CELL ALIVE AVAILABLE TO THE USER */
   selectBox = (row, col) => {
     let gridCopy = arrayClone(this.state.gridFull);
     gridCopy[row][col] = !gridCopy[row][col];
     this.setState({gridFull: gridCopy})
   }
 
+  /* PLACES LIVE CELLS RANDOMLY IN THE BOARD AVAILABLE TO THE USER */
   seed = () => {
+    console.log(this.state.gridFull);
     let gridCopy = arrayClone(this.state.gridFull);
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -39,15 +42,18 @@ class App extends React.Component {
     }
   }
 
+  /* RESUMES THE GAME AVAILABLE TO THE USER */
   playButton = () => {
     clearInterval(this.intervalId)
     this.intervalId = setInterval(this.play, this.speed);
   }
 
+  /* PAUSES THE GAME AVAILABLE TO THE USER */
   pauseButton = () => {
     clearInterval(this.intervalId);
   }
 
+  /* CLEARS THE BOARD AVAILABLE TO THE USER */
   clear = () => {
     let grid = Array(this.rows)
       .fill()
@@ -56,15 +62,19 @@ class App extends React.Component {
     this.pauseButton()
   }
 
+  /* ADJUSTS THE SLOW SPEED AVAILABLE TO THE USER */
   slow = () => {
     this.speed = 1000;
     this.playButton();
   }
+
+  /* ADJUSTS THE FAST SPEED AVAILABLE TO THE USER */
   fast = () => {
     this.speed = 100;
     this.playButton();
   }
 
+  /* ADJUSTS THE GRID SIZES AVAILABLE TO THE USER */
   gridSize = (size) => {
     switch (size) {
       case "Big":
@@ -83,6 +93,7 @@ class App extends React.Component {
     this.clear();
   }
 
+  /* LOOP TO CHECK THE GAME RULLES FOR EACH CELL IN THE BOARD AND AVANCE A GENERATION */
   play = () => {
     let g = this.state.gridFull;
     let g2 = arrayClone(this.state.gridFull);
@@ -126,7 +137,7 @@ class App extends React.Component {
     });
   }
 
-  /* LIFECYCLE METHODS */
+  /* LIFECYCLE METHOD TO DETERMINE WHAT SHOULD HAPPEN WHEN THE APP IS LOADED */
   componentDidMount() {
     this.seed();
     this.playButton();
@@ -167,6 +178,7 @@ class App extends React.Component {
   }
 }
 
+/* FUNCTION TO MAKE A COPY OF THE GRID STATE BEFORE THE SETSTATE */
 function arrayClone(arr) {
   return JSON.parse(JSON.stringify(arr));
 }
