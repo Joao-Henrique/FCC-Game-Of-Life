@@ -62,7 +62,9 @@ const FooterInstance = () => {
           </ul>
         </div>
         <div className="col-md-6 authorFooter">
-          <h6>&copy João Henrique 2017</h6>
+          <h6>
+            <i className="fa fa-copyright "></i>
+            João Henrique 2017</h6>
         </div>
       </div>
     </footer>

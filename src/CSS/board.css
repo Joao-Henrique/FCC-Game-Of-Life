@@ -8,15 +8,15 @@
 }
 
 .off {
-  background-color: lightslategrey;
+  background-color: rgb(70, 70, 70);
 }
 
 .on {
-  background-color: lightgreen;
+  background-color: #4CAF50;
 }
 
 .box:hover {
-  background-color: lightcoral;
+  background-color: yellow;
 }
 
 .center {
