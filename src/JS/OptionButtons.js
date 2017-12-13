@@ -21,14 +21,14 @@ class OptionButtons extends React.Component {
           <DropdownButton title="Grid Size" id="size-menu" onSelect={this.handleSelect}>
             <MenuItem eventKey="default">
               <strong>Small &nbsp;</strong>
-              (Recomended)</MenuItem>
+              (Default)</MenuItem>
             <MenuItem eventKey="Medium">
               <strong>Medium</strong>
             </MenuItem>
             <MenuItem eventKey="Big">
               <strong>Big &nbsp;
               </strong>
-              (Afects System Performance)</MenuItem>
+              (Afects Performance)</MenuItem>
           </DropdownButton>
         </ButtonToolbar>
       </div>

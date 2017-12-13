@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.speed = 100;
-    this.cols = 20;
-    this.rows = 12;
+    this.cols = 30;
+    this.rows = 20;
 
     this.state = {
       generation: 0,
@@ -30,7 +30,6 @@ class App extends React.Component {
 
   /* PLACES LIVE CELLS RANDOMLY IN THE BOARD AVAILABLE TO THE USER */
   seed = () => {
-    console.log(this.state.gridFull);
     let gridCopy = arrayClone(this.state.gridFull);
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -64,7 +63,7 @@ class App extends React.Component {
 
   /* ADJUSTS THE SLOW SPEED AVAILABLE TO THE USER */
   slow = () => {
-    this.speed = 1000;
+    this.speed = 500;
     this.playButton();
   }
 
@@ -79,15 +78,15 @@ class App extends React.Component {
     switch (size) {
       case "Big":
         this.cols = 70;
-        this.rows = 48;
+        this.rows = 50;
         break;
       case "Medium":
-        this.cols = 40;
-        this.rows = 24;
+        this.cols = 50;
+        this.rows = 35;
         break;
       default:
-        this.cols = 20;
-        this.rows = 12;
+        this.cols = 30;
+        this.rows = 20;
         break;
     }
     this.clear();
